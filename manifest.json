@@ -14,7 +14,7 @@
 
   "content_scripts": [
     {
-      "matches": ["https://docs.google.com/*", "https://drive.google.com/*"],
+      "matches": ["https://docs.google.com/*", "https://drive.google.com/*", "https://contentsquare.mavenlink.com/*"],
       "js": ["lib/sha1.js", "lib/pnglib.js", "lib/identicon.js", "index.js"]
     }
   ]

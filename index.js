@@ -58,6 +58,12 @@ let configs = [
     [180, 0, 224, 255],
     [255, 255, 255, 255],
   ),
+  new Config(
+    "Kantata Workspaces",
+    /contentsquare.mavenlink.com\/workspaces\/([_A-Za-z0-9-]+)/,
+    [239, 115, 20, 255],
+    [255, 255, 255, 255],
+  ),
 ];
 
 // Find a config that matches the current URL
@@ -72,6 +78,17 @@ if (config) {
     background: config.bgColor,
     foreground: config.fgColor,
   }).toString();
-  document.querySelector('link[rel*="icon"]').href =
-    "data:image/png;base64," + iconBase64;
+
+  //document.querySelector('link[rel*="icon"]').href = "data:image/png;base64," + iconBase64;
+
+  // Remove all existing favicon links
+  document
+    .querySelectorAll('link[rel*="icon"]')
+    .forEach((link) => link.remove());
+
+  // Create and inject new favicon link
+  const newFavicon = document.createElement("link");
+  newFavicon.rel = "icon";
+  newFavicon.href = "data:image/png;base64," + iconBase64;
+  document.head.appendChild(newFavicon);
 }
